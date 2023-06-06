@@ -96,13 +96,12 @@ class Solution {
 ```
 tr029211
 #      	[剑指 Offer 21]调整数组顺序使奇数位于偶数前面	65.0%	Easy	0.0%
-我的思路：两个数组
-题解思路：一个数组的话，就先遍历奇数，后遍历偶数
+我的思路：一个数组的话，就先遍历奇数，后遍历偶数
 class Solution {
     public int[] exchange(int[] nums) {
         int n= nums.length;
         int index =0;
-        int [] res =new int[][n];
+        int [] res =new int[];
         for (int num:nums){
             if (num%2==1){
                 res[index++] =num;
@@ -114,5 +113,21 @@ class Solution {
             }
         }
 return res;
+    }
+}
+题解思路：双指针一次遍历
+class Solution {
+    public int[] exchange(int[] nums) {
+        int n = nums.length;
+        int[] res = new int[n];
+        int left = 0, right = n - 1;
+        for (int num : nums) {
+            if (num % 2 == 1) {
+                res[left++] = num;
+            } else {
+                res[right--] = num;
+            }
+        }
+        return res;
     }
 }
